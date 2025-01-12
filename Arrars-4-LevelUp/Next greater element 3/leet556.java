@@ -1,11 +1,11 @@
 class Solution {
     public int nextGreaterElement(int n) {
-        char[] ch = (n + "").toCharArray();
+        char[] ch = (n + "").toCharArray(); // sometimes the given value can be very large so use char array
 
         int index = -1;
         for (int i = ch.length - 2; i >= 0; i--) {
             if (ch[i] < ch[i + 1]) {
-                index = i;
+                index = i; // you got he index of the element which can be swapped
                 break;
             }
         }
@@ -17,7 +17,7 @@ class Solution {
         int small = index + 1;
         for (int j = index + 1; j < ch.length; j++) {
             if (ch[j] > val && ch[j] <= ch[small]) {
-                small = j;
+                small = j; // you got the element which can be swapped with above found index
             }
         }
 
@@ -36,3 +36,15 @@ class Solution {
         }
     }
 }
+
+// if u dont wanna use sort( nlogn ) , use this function instead
+// public void reverse(char[] ch , int s, int e){
+// while(s<e){
+// char temp = ch[s];
+// ch[s] = ch[e];
+// ch[e] = temp;
+// s++;
+// e--;
+// }
+
+// }
